@@ -18295,7 +18295,7 @@ process.nextTick = (function () {
 
 process.title = 'browser';
 process.browser = true;
-process.env = {};
+process.env = { NODE_ENV: 'production' };
 process.argv = [];
 
 function noop() {}
