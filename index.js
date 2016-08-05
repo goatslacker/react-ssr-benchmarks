@@ -1,5 +1,6 @@
 const assert = require('assert')
 const Benchmark = require('benchmark')
+const createComponent = require('./createComponent')
 
 const Reacts = {
   12: require('./react/12'),
@@ -10,18 +11,25 @@ const Reacts = {
 
 const Components = Object.keys(Reacts).reduce((obj, version) => {
   const React = Reacts[version].React
-  obj[version] = React.createClass({
-    render() {
-      return React.createElement('div', null, 'Hello, ', this.props.text)
-    }
-  })
+
+  // You can toggle between simple or complex components here
+  obj[version] = createComponent.complex(React)
   return obj
 }, {})
 
 function render(version) {
   const React = Reacts[version].React
   const ReactDOMServer = Reacts[version].ReactDOMServer
-  return ReactDOMServer.renderToString(React.createElement(Components[version], { text: 'World' }))
+
+  const props = {
+    breadth: 8,
+    depth: 4,
+    text: 'World',
+  }
+
+  return ReactDOMServer.renderToString(
+    React.createElement(Components[version], props)
+  )
 }
 
 function assertVersions(version) {
