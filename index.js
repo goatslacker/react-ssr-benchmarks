@@ -68,7 +68,7 @@ module.exports = (isSimple, createBenchmarkFunction) => {
     render(15, isSimple)
   })
 
-  if (renderer) {
+  if (createBenchmarkFunction) {
     suite.add('You', createBenchmarkFunction(Reacts, Components))
   }
 
