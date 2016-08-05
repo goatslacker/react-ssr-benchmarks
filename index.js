@@ -11,15 +11,17 @@ const Reacts = {
 
 const Components = Object.keys(Reacts).reduce((obj, version) => {
   const React = Reacts[version].React
-
-  // You can toggle between simple or complex components here
-  obj[version] = createComponent.complex(React)
+  obj[version] = {
+    simple: createComponent.complex(React),
+    complex: createComponent.complex(React),
+  }
   return obj
 }, {})
 
-function render(version) {
+function render(version, isSimple) {
   const React = Reacts[version].React
   const ReactDOMServer = Reacts[version].ReactDOMServer
+  const type = isSimple ? 'simple' : 'complex'
 
   const props = {
     breadth: 8,
@@ -28,7 +30,7 @@ function render(version) {
   }
 
   return ReactDOMServer.renderToString(
-    React.createElement(Components[version], props)
+    React.createElement(Components[version][type], props)
   )
 }
 
@@ -49,30 +51,32 @@ function assertVersions(version) {
 // Make sure each version is correct
 Object.keys(Reacts).forEach(version => assertVersions(version))
 
-// Make sure we are in "production" mode
-assert.ok(process.env.NODE_ENV === 'production')
-
 // Logging to console so you can assert the markup is correct
 Object.keys(Reacts).forEach(version => console.log(render(version)))
 
-// Begin benchmarking
-new Benchmark.Suite()
-  .add('12', function () {
-    render(12)
+module.exports = (isSimple, renderer) => {
+  const suite = new Benchmark.Suite()
+
+  // Begin benchmarking
+  suite.add('12', function () {
+    render(12, isSimple)
+  }).add('13', function () {
+    render(13, isSimple)
+  }).add('14', function () {
+    render(14, isSimple)
+  }).add('15', function () {
+    render(15, isSimple)
   })
-  .add('13', function () {
-    render(13)
-  })
-  .add('14', function () {
-    render(14)
-  })
-  .add('15', function () {
-    render(15)
-  })
-  .on('cycle', function (event) {
+
+  if (renderer) {
+    suite.add('You', function () {
+      renderer(Components)
+    })
+  }
+
+  suite.on('cycle', function (event) {
     console.log(String(event.target))
-  })
-  .on('complete', function () {
+  }).on('complete', function () {
     console.log('Fastest is ' + this.filter('fastest').map('name'))
-  })
-  .run()
+  }).run()
+}
