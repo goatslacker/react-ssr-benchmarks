@@ -15,24 +15,22 @@ The benchmarks are ran with `NODE_ENV=production` so that checks and warnings ar
 
 ## Results
 
-12 > 14 > 13 > 15
-
 ### Simple
 
 ```txt
-12 x 33,660 ops/sec ±2.65% (81 runs sampled)
-13 x 14,411 ops/sec ±1.71% (82 runs sampled)
-14 x 24,226 ops/sec ±2.07% (85 runs sampled)
-15 x 4,865 ops/sec ±2.12% (78 runs sampled)
+12 x 41,539 ops/sec ±1.95% (86 runs sampled)
+13 x 49,345 ops/sec ±3.08% (82 runs sampled)
+14 x 65,459 ops/sec ±2.99% (83 runs sampled)
+15 x 103,724 ops/sec ±2.55% (82 runs sampled)
 ```
 
 ### Complex
 
 ```txt
-12 x 27.01 ops/sec ±4.64% (47 runs sampled)
-13 x 8.09 ops/sec ±3.67% (25 runs sampled)
-14 x 17.10 ops/sec ±3.72% (34 runs sampled)
-15 x 2.96 ops/sec ±10.37% (11 runs sampled)
+12 x 44.76 ops/sec ±1.76% (57 runs sampled)
+13 x 49.06 ops/sec ±3.41% (63 runs sampled)
+14 x 70.77 ops/sec ±2.07% (61 runs sampled)
+15 x 65.38 ops/sec ±4.63% (63 runs sampled)
 ```
 
 ## License
