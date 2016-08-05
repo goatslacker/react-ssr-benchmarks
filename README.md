@@ -3,7 +3,7 @@
 The purpose of this repo is to host runnable benchmarks of React's server-side rendering across
 different versions.
 
-I've browserified React into different bundles which exist in [react/](the react/ folder).
+I've browserified React into different bundles which exist in [the react/ folder](react/).
 
 The benchmarks are ran with `NODE_ENV=production` so that checks and warnings are skipped.
 
