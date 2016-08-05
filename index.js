@@ -54,7 +54,7 @@ Object.keys(Reacts).forEach(version => assertVersions(version))
 // Logging to console so you can assert the markup is correct
 Object.keys(Reacts).forEach(version => console.log(render(version)))
 
-module.exports = (isSimple, renderer) => {
+module.exports = (isSimple, createBenchmarkFunction) => {
   const suite = new Benchmark.Suite()
 
   // Begin benchmarking
@@ -69,9 +69,7 @@ module.exports = (isSimple, renderer) => {
   })
 
   if (renderer) {
-    suite.add('You', function () {
-      renderer(Components)
-    })
+    suite.add('You', createBenchmarkFunction(Reacts, Components))
   }
 
   suite.on('cycle', function (event) {
