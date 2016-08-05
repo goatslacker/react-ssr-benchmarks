@@ -4,6 +4,7 @@
   "description": "Benchmarks comparing React's server rendering for versions 12--15",
   "main": "index.js",
   "scripts": {
+    "bench": "NODE_ENV=production node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
