@@ -12,7 +12,7 @@ const Reacts = {
 const Components = Object.keys(Reacts).reduce((obj, version) => {
   const React = Reacts[version].React
   obj[version] = {
-    simple: createComponent.complex(React),
+    simple: createComponent.simple(React),
     complex: createComponent.complex(React),
   }
   return obj
