@@ -48,13 +48,13 @@ function assertVersions(version) {
     `Failed version check for ${version}. Expected ${valid[version]} got ${React.version}`)
 }
 
-// Make sure each version is correct
-Object.keys(Reacts).forEach(version => assertVersions(version))
-
-// Logging to console so you can assert the markup is correct
-Object.keys(Reacts).forEach(version => console.log(render(version)))
-
 module.exports = (isSimple, createBenchmarkFunction) => {
+  // Make sure each version is correct
+  Object.keys(Reacts).forEach(version => assertVersions(version))
+
+  // Logging to console so you can assert the markup is correct
+  Object.keys(Reacts).forEach(version => console.log(render(version, isSimple)))
+
   const suite = new Benchmark.Suite()
 
   // Begin benchmarking
