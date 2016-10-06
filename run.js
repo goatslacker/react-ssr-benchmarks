@@ -1,1 +1,1 @@
-require('./')(false)
+require('./')()

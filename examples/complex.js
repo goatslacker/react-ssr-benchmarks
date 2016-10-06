@@ -1,4 +1,4 @@
-exports.complex = (React) => {
+exports.getComponent = (React) => {
   const RecursiveDivs = React.createClass({
     click() {
       console.log('CLICKED!')
@@ -28,8 +28,9 @@ exports.complex = (React) => {
   return RecursiveDivs
 }
 
-exports.simple = React => React.createClass({
-  render() {
-    return React.createElement('div', null, 'Hello, ', this.props.text)
-  },
-})
+exports.render = (Component, React, ReactDOMServer) => ReactDOMServer.renderToString(
+  React.createElement(Component, {
+    breadth: 8,
+    depth: 4,
+  })
+)
