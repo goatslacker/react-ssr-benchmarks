@@ -1,6 +1,6 @@
 {
   "name": "react-ssr-benchmarks",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Benchmarks comparing React's server rendering for versions 12--15",
   "main": "index.js",
   "scripts": {
