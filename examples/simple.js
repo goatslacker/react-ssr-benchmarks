@@ -4,6 +4,6 @@ exports.getComponent = React => React.createClass({
   },
 })
 
-exports.render = (Component, React, ReactDOMServer) => ReactDOMServer.renderToString(
-  React.createElement(Component, { text: 'World' })
-)
+exports.props = {
+  text: 'World!',
+}

@@ -28,9 +28,7 @@ exports.getComponent = (React) => {
   return RecursiveDivs
 }
 
-exports.render = (Component, React, ReactDOMServer) => ReactDOMServer.renderToString(
-  React.createElement(Component, {
-    breadth: 8,
-    depth: 4,
-  })
-)
+exports.props = {
+  breadth: 8,
+  depth: 4,
+}

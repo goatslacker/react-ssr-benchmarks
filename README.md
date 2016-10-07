@@ -68,9 +68,9 @@ benchmarks({
     }
   },
 
-  render: (Component, React, ReactDOMServer) => ReactDOMServer.renderToString(
-    <Component foo="baz" />
-  ),
+  props: {
+    foo: 'baz',
+  },
 })
 ```
 
